@@ -16,6 +16,7 @@ public class Launch1 {
 		// TODO Auto-generated method stub
 		
 		
+		
 		try {
 			//load and register the driver
 			Driver driver = new Driver();
@@ -37,26 +38,31 @@ public class Launch1 {
 			System.out.println("Statement object is created:: "+ statement);
 
 			//4. Send and execute query
-			String sqlSelectQuery = "select No, Name,sex,class from student";
+			String sqlSelectQuery = "select No,Name,sex,class from student";
 			ResultSet resultSet = statement.executeQuery(sqlSelectQuery);
 			System.out.println("ResultSet object is created:: "+ resultSet);
 
 			//5. Process the result from ResultSet
-			System.out.println("\tSID\tNAME\tSEX\tCLASS");
+			System.out.println("\tSID\tNAME\t\tSEX\tCLASS");
 			while(resultSet.next()) {
 				Integer id = resultSet.getInt(1);
 				String name = resultSet.getString(2);
 				String sex = resultSet.getString(3);
 				String st_class = resultSet.getString(4);
+				System.out.println("\t"+id+"\t"+name+"\t\t"+sex+"\t"+st_class);
 				
 			}
+			
+			//6. Close the connection
+			connection.close();
+			System.out.println("Closing the connection...");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//6. Close the connection
+		
 
 	}
 
