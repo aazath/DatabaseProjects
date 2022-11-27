@@ -1,20 +1,29 @@
+package com.aazath.jdbc.test;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
-public class DeleteApp {
+public class DynamicDelete {
 
 	public static void main(String[] args) throws SQLException {
 		// resources needed for the application
 		Connection connection = null;
 		Statement statement = null;
 		
-		//establish the connection
+		//connection credentials
 		String url = "jdbc:mysql://localhost:3306/enterprisejava";
 		String username = "root";
 		String password = "";
+		
+		System.out.println("Deleting a student's Details ");
+		System.out.println("=============================");
+		//get the id for deletion
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the Student ID : ");
+		int sid = scan.nextInt();
 		
 		try {
 			connection = DriverManager.getConnection(url,username,password);
@@ -26,10 +35,10 @@ public class DeleteApp {
 				
 				if(statement != null)
 				{
-					String updateSqlQuery = "delete from student where sid =1";
+					String deleteSqlQuery = "delete from student where sid ='"+sid+"'";
 					
 					//using statement object to execute query
-					int noOfRowsAffected = statement.executeUpdate(updateSqlQuery);
+					int noOfRowsAffected = statement.executeUpdate(deleteSqlQuery);
 					System.out.println("No of rows affected : "+noOfRowsAffected);
 					
 					

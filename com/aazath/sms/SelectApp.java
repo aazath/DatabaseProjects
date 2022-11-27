@@ -1,21 +1,25 @@
+package com.aazath.sms;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UpdateApp {
+public class SelectApp {
 
 	public static void main(String[] args) throws SQLException {
 		// resources needed for the application
 		Connection connection = null;
 		Statement statement = null;
+		ResultSet resultSet = null;
 		
-		//establish the connection
+		//connection credentials
 		String url = "jdbc:mysql://localhost:3306/enterprisejava";
 		String username = "root";
 		String password = "";
 		
+		System.out.println("View all students in the system");
+		System.out.println("===============================");
 		try {
 			connection = DriverManager.getConnection(url,username,password);
 			
@@ -26,13 +30,23 @@ public class UpdateApp {
 				
 				if(statement != null)
 				{
-					String updateSqlQuery = "update student set saddr = 'Kalmunai' where sid =1";
+					String selectSqlQuery = "select sid,sname,saddr from student";
 					
 					//using statement object to execute query
-					int noOfRowsAffected = statement.executeUpdate(updateSqlQuery);
-					System.out.println("No of rows affected : "+noOfRowsAffected);
+					resultSet = statement.executeQuery(selectSqlQuery);
 					
-					
+					//process the result set to get data
+					System.out.println("SID\tSNAME\tSADDR");
+					if(resultSet != null)
+					{
+						while(resultSet.next())
+						{
+							int sid = resultSet.getInt("sid");
+							String sname = resultSet.getString("sname");
+							String saddr = resultSet.getString("saddr");
+							System.out.println(sid + "\t"+sname+"\t"+saddr);
+						}
+					}
 				}
 			}
 			
@@ -48,6 +62,10 @@ public class UpdateApp {
 		finally
 		{
 			//close the resources
+			if(resultSet != null)
+			{
+				resultSet.close();
+			}
 			if (statement != null) {
 				statement.close();
 			}
