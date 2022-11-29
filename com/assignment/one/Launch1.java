@@ -1,4 +1,4 @@
-package com.aazath.sms;
+package com.assignment.one;
 //standard steps followed in JDBC Application
 //1. Load and Register the Driver
 //2. Establish the connection

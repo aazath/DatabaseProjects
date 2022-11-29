@@ -1,11 +1,11 @@
-package com.aazath.sms;
+package com.assignment.one;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertApp {
+public class DeleteApp {
 
 	public static void main(String[] args) throws SQLException {
 		// resources needed for the application
@@ -17,8 +17,8 @@ public class InsertApp {
 		String username = "root";
 		String password = "";
 		
-		System.out.println("Add a new student to the system");
-		System.out.println("===============================");
+		System.out.println("Deleting a student's Details ");
+		System.out.println("=============================");
 		try {
 			connection = DriverManager.getConnection(url,username,password);
 			
@@ -29,10 +29,10 @@ public class InsertApp {
 				
 				if(statement != null)
 				{
-					String insertSqlQuery = "insert into student values(1,'Aazath','Sri Lanka')";
+					String deleteSqlQuery = "delete from student where sid =1";
 					
 					//using statement object to execute query
-					int noOfRowsAffected = statement.executeUpdate(insertSqlQuery);
+					int noOfRowsAffected = statement.executeUpdate(deleteSqlQuery);
 					System.out.println("No of rows affected : "+noOfRowsAffected);
 					
 					

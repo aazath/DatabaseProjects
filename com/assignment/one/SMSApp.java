@@ -1,4 +1,4 @@
-package com.aazath.sms;
+package com.assignment.one;
 
 import java.sql.SQLException;
 import java.util.Scanner;
