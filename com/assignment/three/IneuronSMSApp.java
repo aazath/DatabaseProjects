@@ -1,3 +1,5 @@
+//This java application will perform CRUD operation on mysql database
+//using JDBC
 package com.assignment.three;
 
 import java.sql.SQLException;
