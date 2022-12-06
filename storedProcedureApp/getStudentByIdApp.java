@@ -1,4 +1,4 @@
-package sp.storedProcedureApp;
+package storedProcedureApp;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

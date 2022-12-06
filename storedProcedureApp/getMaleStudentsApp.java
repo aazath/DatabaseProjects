@@ -1,4 +1,4 @@
-package sp.storedProcedureApp;
+package storedProcedureApp;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.sql.CallableStatement;
 import com.projects.jdbcUtil.JdbcUtil;
 
-public class getFemaleStudentsApp {
+public class getMaleStudentsApp {
 
 	public static void main(String[] args) {
 		Connection connection = null;
@@ -17,10 +17,8 @@ public class getFemaleStudentsApp {
 		System.out.println("Searching a student :");
 		System.out.println("=====================");
 		
-		
-		
 		connection = JdbcUtil.getJdbcConnection();
-		String sp = "{call getMales()}";
+		String sp = "{call getFemales()}";
 		try {
 			if(connection!=null)
 			{
@@ -39,8 +37,8 @@ public class getFemaleStudentsApp {
 				while(rs.next())
 				{
 					int sid = rs.getInt(1);
-					String name = rs.getString(3);
-					String address = rs.getString(4);
+					String name = rs.getString(2);
+					String address = rs.getString(3);
 					System.out.println(sid+"\t"+name+"\t"+address);
 					
 				}
